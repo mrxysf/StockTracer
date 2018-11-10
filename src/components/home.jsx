@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PullUData from "./firebase/pullUData";
-import { Redirect } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
@@ -15,7 +14,6 @@ const styles = theme => ({
 
 class Home extends Component {
   state = {
-    redirect: false,
     isOpen: false
   };
   handleOpen = () => {
@@ -29,9 +27,6 @@ class Home extends Component {
     });
   };
   render() {
-    if (this.state.redirect) {
-      return <Redirect to="/newData" />;
-    }
     const { classes } = { ...this.props };
     return (
       <div>

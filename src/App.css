@@ -1,0 +1,30 @@
+#root {
+  height: 100%;
+  width: 100%;
+}
+a:hover {
+  cursor: pointer;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background-color: #575757;
+}
+
+.login .ui.input {
+  display: block;
+  margin-bottom: 6px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

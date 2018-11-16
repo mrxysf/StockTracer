@@ -1,4 +1,5 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
+import Anew from "anew";
 
 //Material UI
 import { withStyles } from "@material-ui/core/styles";
@@ -22,9 +23,15 @@ const styles = {
   }
 };
 
-class Navbar extends PureComponent {
+class Navbar extends Component {
+  static mapStateToProps(select) {
+    return {
+      userName: select.userInfo.getUserName()
+    };
+  }
   render() {
     const { classes } = this.props;
+    console.log(this.props);
 
     return (
       <div className={classes.root}>
@@ -40,7 +47,7 @@ class Navbar extends PureComponent {
             <Typography className={classes.grow} variant="h6" color="inherit">
               {this.props.pathname.slice(1)}
             </Typography>
-            <Button color="inherit">Haha</Button>
+            <Button color="inherit">{this.props.userName}</Button>
           </Toolbar>
         </AppBar>
       </div>
@@ -48,4 +55,4 @@ class Navbar extends PureComponent {
   }
 }
 
-export default withStyles(styles)(Navbar);
+export default withStyles(styles)(Anew.connect(Navbar));

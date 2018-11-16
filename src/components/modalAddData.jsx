@@ -105,7 +105,7 @@ class ModalAddData extends Component {
       },
       {
         key: "Sold",
-        type: "number",
+        // type: "number",
         onChange: input => this.setState({ iSold: input.target.value }),
         label: "Item Sold"
       }

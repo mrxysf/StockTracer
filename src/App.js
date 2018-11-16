@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import * as firebase from "firebase";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Anew from "anew";
 
 //Components
@@ -45,14 +45,14 @@ class App extends Component {
       }
     ];
 
-    // const renderLogin = () =>
-    //   this.props.isAuth ? <Redirect to="/home" /> : <FirebaseLogIn />;
+    const renderLogin = () =>
+      this.props.isAuth ? <Redirect to="/home" /> : <FirebaseLogIn />;
 
     return (
       <BrowserRouter>
         <Switch>
           <Route path="/" component={FirebaseLogIn} exact />
-          <Route path="/login" component={FirebaseLogIn} exact />
+          <Route path="/login" render={renderLogin} exact />
           <Route path="/signUp" component={FirebaseSignUp} exact />
           {PrivateRoutes.map(props => (
             <PrivateRoute key={props.key} {...props} />

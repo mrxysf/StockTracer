@@ -17,13 +17,15 @@ class FirebaseLogIn extends Component {
   static mapStateToProps(select) {
     return {
       userID: select.userInfo.getUserID(),
-      userItems: select.userInfo.getUserItems()
+      userItems: select.userInfo.getUserItems(),
+      userName: select.userInfo.getUserName()
     };
   }
 
   static mapDispatchToProps(dispatch) {
     return {
       setUserID: dispatch.reducers.userInfo.setUserID,
+      setUserName: dispatch.reducers.userInfo.setUserName,
       setAuth: dispatch.reducers.authenticate.authenticated
     };
   }
@@ -38,6 +40,7 @@ class FirebaseLogIn extends Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(user => {
         this.props.setUserID(user.user.uid);
+        this.props.setUserName(user.user.email);
         //set auth true
         this.props.setAuth();
         this.setState({
